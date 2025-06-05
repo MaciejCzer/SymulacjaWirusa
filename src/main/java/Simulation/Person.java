@@ -12,6 +12,8 @@ public class Person {
     public Person(Point position) {
         this.position = position;
         this.alive = true;
+        this.infected = false;
+        this.immune = false;
     }
 
     public void move(int mapWidth, int mapHeight) {
