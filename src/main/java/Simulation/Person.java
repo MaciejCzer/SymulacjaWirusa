@@ -5,10 +5,12 @@ import java.util.Random;
 public class Person {
     private Point position;
     private boolean alive;
+    private boolean infected;
     private static final Random rand = new Random();
     public Person(Point position) {
         this.position = position;
         this.alive = true;
+        this.infected = false;
     }
 
     public void move(int mapWidth, int mapHeight) {
@@ -23,4 +25,17 @@ public class Person {
 
     public Point getPosition() { return position; }
     public boolean isAlive() { return alive; }
+
+    public boolean isInfected() {
+        return infected;
+    }
+
+    public void setInfected(boolean infected) {
+        this.infected = infected;
+    }
+
+    public void heal() {
+        infected = false;
+
+    }
 }
