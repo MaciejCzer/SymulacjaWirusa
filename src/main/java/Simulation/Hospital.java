@@ -21,7 +21,7 @@ public class Hospital {
         return position.distance(person.getPosition()) <= healingRdius;
 
     }
-    public boolean heal(Person person) {
+    public void heal(Person person) {
         if (person.isInfected()){
             person.heal();
         }
