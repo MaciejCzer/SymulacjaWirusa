@@ -9,9 +9,11 @@ public class Hospital {
         this.position = position;
         this.healingRdius = healingRdius;
     }
+
     public Point getPosition() {
         return position;
     }
+
     public int getHealingRdius() {
         return healingRdius;
 
@@ -21,9 +23,11 @@ public class Hospital {
         return position.distance(person.getPosition()) <= healingRdius;
 
     }
+
     public void heal(Person person) {
-        if (person.isInfected()){
+        if (person.isInfected()) {
             person.heal();
         }
     }
+
 }
