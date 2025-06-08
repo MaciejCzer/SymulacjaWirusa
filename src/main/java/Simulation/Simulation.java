@@ -7,10 +7,12 @@ public class Simulation {
     private final MapGrid grid;
     private final Config config;
     private static final Random random = new Random();
+    private final DataLogger logger;
 
     public Simulation(Config config) {
         this.config = config;
         this.grid = new MapGrid(config.getMapWidth(), config.getMapHeight(), config);
+        this.logger = new DataLogger("symulacja.csv");
         initializeSimulation();
     }
 
@@ -50,7 +52,10 @@ public class Simulation {
                 System.out.println(pos.getX() + " " + pos.getY());
                 System.out.println("Zyje " + person.isAlive() + " Chory " + person.isInfected() + " odporny " + person.isImmune());
             }
+            logger.log(epoch, grid.getPeople());
         }
+        logger.close();
+        System.out.println("Dane zapisane do pliku csv");
     }
     public static void main(String[] args) {
         Config config = new Config();
