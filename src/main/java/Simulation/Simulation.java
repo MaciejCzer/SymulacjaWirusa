@@ -53,7 +53,7 @@ public class Simulation {
         }
     }
     public static void main(String[] args) {
-        Config config = Config.getDefaultConfig();
+        Config config = new Config();
         Simulation simulation = new Simulation(config);
         simulation.run();
     }

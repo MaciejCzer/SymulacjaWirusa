@@ -1,5 +1,8 @@
 package Simulation;
 
+import java.util.Scanner;
+
+
 public class Config {
     private final int mapWidth;
     private final int mapHeight;
@@ -11,34 +14,41 @@ public class Config {
     private final int initialInfected;
     private final int HospitalsNumber;
     private final int HealingRdius;
-    public Config(int mapWidth, int mapHeight, int initialPopulation, int simulationDuration, int infectionRate,
-                  int deathRate, int immunityDuration, int initialInfected, int HospitalsNumber, int HealingRdius) {
-        this.mapWidth = mapWidth;
-        this.mapHeight = mapHeight;
-        this.initialPopulation = initialPopulation;
-        this.simulationDuration = simulationDuration;
-        this.infectionRate = infectionRate;
-        this.deathRate = deathRate;
-        this.immunityDuration = immunityDuration;
-        this.initialInfected = initialInfected;
-        this.HospitalsNumber = HospitalsNumber;
-        this.HealingRdius = HealingRdius;
+    public Config() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Szerokość mapy: ");
+        this.mapWidth = scanner.nextInt();
+
+        System.out.print("Wysokość mapy: ");
+        this.mapHeight = scanner.nextInt();
+
+        System.out.print("Liczba osób: ");
+        this.initialPopulation = scanner.nextInt();
+
+        System.out.print("Długość symulacji : ");
+        this.simulationDuration = scanner.nextInt();
+
+        System.out.print("Szansa zarażenia : ");
+        this.infectionRate = scanner.nextInt();
+
+        System.out.print("Szansa śmierci : ");
+        this.deathRate = scanner.nextInt();
+
+        System.out.print("Długość odporności : ");
+        this.immunityDuration = scanner.nextInt();
+
+        System.out.print("Początkowa liczba zarażonych: ");
+        this.initialInfected = scanner.nextInt();
+
+        System.out.print("Liczba szpitali: ");
+        this.HospitalsNumber = scanner.nextInt();
+
+        System.out.print("Zasięg leczenia szpitala: ");
+        this.HealingRdius = scanner.nextInt();
     }
 
-    public static Config getDefaultConfig() {
-        return new Config(
-                10,
-                10,
-                10,
-                20,
-                50,
-                10,
-                40,
-                2,
-                2,
-                4
-        );
-    }
+
 
     public int getMapWidth() { return mapWidth; }
     public int getMapHeight() { return mapHeight; }
