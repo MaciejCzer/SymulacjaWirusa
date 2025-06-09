@@ -85,6 +85,11 @@ public class MapGrid {
             }
         }
 
+    public List<Person> getPeople() { return people; }
 
-        public List<Person> getPeople() { return people; }
+    public List<Hospital> getHospitals() { return new ArrayList<>(hospitals); }
+
+    public int getWidth() { return width; }
+
+    public int getHeight() { return height; }
 }

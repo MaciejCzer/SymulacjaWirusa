@@ -14,6 +14,7 @@ public class Config {
     private final int initialInfected;
     private final int HospitalsNumber;
     private final int HealingRdius;
+    private final int Delay;
     public Config() {
         Scanner scanner = new Scanner(System.in);
 
@@ -46,6 +47,10 @@ public class Config {
 
         System.out.print("Zasięg leczenia szpitala: ");
         this.HealingRdius = scanner.nextInt();
+
+        System.out.println("Czas wyswietlania");
+        this.Delay = scanner.nextInt();
+
     }
 
 
@@ -60,4 +65,5 @@ public class Config {
     public int getInitialInfected() { return initialInfected; }
     public int getHospitalsNumber() { return HospitalsNumber; }
     public int getHealingRdius() { return HealingRdius; }
+    public int getDelay() { return Delay; }
 }

@@ -8,11 +8,13 @@ public class Simulation {
     private final Config config;
     private static final Random random = new Random();
     private final DataLogger logger;
+    private final Renderer renderer;
 
     public Simulation(Config config) {
         this.config = config;
         this.grid = new MapGrid(config.getMapWidth(), config.getMapHeight(), config);
         this.logger = new DataLogger("symulacja.csv");
+        this.renderer = new Renderer();
         initializeSimulation();
     }
 
@@ -46,13 +48,13 @@ public class Simulation {
             grid.healPeople();
             grid.deaths();
             grid.updateTimer();
-            System.out.println("Epoka"+ epoch);
-            for (Person person : grid.getPeople()) {
-                Point pos = person.getPosition();
-                System.out.println(pos.getX() + " " + pos.getY());
-                System.out.println("Zyje " + person.isAlive() + " Chory " + person.isInfected() + " odporny " + person.isImmune());
-            }
+            renderer.render(grid);
             logger.log(epoch, grid.getPeople());
+            try {
+                Thread.sleep(config.getDelay());
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
         }
         logger.close();
         System.out.println("Dane zapisane do pliku csv");
