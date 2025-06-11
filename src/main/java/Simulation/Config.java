@@ -2,7 +2,9 @@ package Simulation;
 
 import java.util.Scanner;
 
-
+/**
+ * Klasa w której znajdują się wszystkie parametry potrzebne do przeprowadzenia symulacji
+ */
 public class Config {
     private final int mapWidth;
     private final int mapHeight;
@@ -15,6 +17,11 @@ public class Config {
     private final int HospitalsNumber;
     private final int HealingRdius;
     private final int Delay;
+
+    /**
+     * Konstruktor configu
+     * Wszystkie parametry przyjmowane są z klawiatury
+     */
     public Config() {
         Scanner scanner = new Scanner(System.in);
 

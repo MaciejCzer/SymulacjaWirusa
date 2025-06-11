@@ -2,7 +2,9 @@ package Simulation;
 
 import java.util.Random;
 
-
+/**
+ * Główna klasa symulacji
+ */
 public class Simulation {
     private final MapGrid grid;
     private final Config config;
@@ -10,6 +12,10 @@ public class Simulation {
     private final DataLogger logger;
     private final Renderer renderer;
 
+    /**
+     * Konstruktor symulacji
+     * @param config
+     */
     public Simulation(Config config) {
         this.config = config;
         this.grid = new MapGrid(config.getMapWidth(), config.getMapHeight(), config);
@@ -18,6 +24,10 @@ public class Simulation {
         initializeSimulation();
     }
 
+    /**
+     * Funkcja inicjalizująca symulację
+     * Dodaje ludzi i szpitale
+     */
     private void initializeSimulation() {
         for (int i = 0; i < config.getInitialPopulation(); i++) {
             Point position = getRandomPosition();
@@ -35,12 +45,20 @@ public class Simulation {
         }
     }
 
+    /**
+     * Funkcja do pozyskiwania losowych punktów na planszy
+     * @return Point
+     */
     private Point getRandomPosition() {
         return new Point(
                 random.nextInt(config.getMapWidth()),
                 random.nextInt(config.getMapHeight()));
     }
 
+    /**
+     * Główna funkcja odpowiedzialna za przebieg symulacji
+     * Wykonuje zadaną liczbe epok
+     */
     public void run() {
         for (int epoch = 0; epoch < config.getSimulationDuration(); epoch++) {
             grid.movePeople();
