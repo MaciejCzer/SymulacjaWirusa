@@ -2,6 +2,9 @@ package Simulation;
 
 import java.io.IOException;
 
+/**
+ * Klasa wyświetlająca przebieg symulacji
+ */
 public class Renderer {
     private static final char EMPTY = '.';
     private static final char HEALTHY = 'Z';
@@ -9,6 +12,10 @@ public class Renderer {
     private static final char DEAD = 'X';
     private static final char HOSPITAL = '#';
 
+    /**
+     * Wyświetla obecny stan symulacji w konsoli za pomocą znaków
+     * @param grid plansza reprezentująca obecny stan symulacji
+     */
     public void render(MapGrid grid) {
         char[][] display = new char[grid.getHeight()][grid.getWidth()];
 

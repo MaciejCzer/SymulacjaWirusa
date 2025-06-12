@@ -5,9 +5,16 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
+/**
+ * Klasa loggera zapisującego stan każdej epoki
+ */
 public class DataLogger {
     private PrintWriter writer;
 
+    /**
+     * Konstruktor loggera zapisującego do danego pliku
+     * @param filename nazwa pliku
+     */
     public DataLogger(String filename) {
         try {
             writer = new PrintWriter(new FileWriter(filename));
@@ -17,6 +24,11 @@ public class DataLogger {
         }
     }
 
+    /**
+     * Funkcja pobierająca dane o obecnej epoce i zapisująca je do pliku csv
+     * @param epoch obecna epoka
+     * @param people lista ludzi
+     */
     public void log(int epoch, List<Person> people) {
         int alive = 0;
         int infected = 0;
@@ -38,6 +50,9 @@ public class DataLogger {
         }
     }
 
+    /**
+     * Funkcja zamykająca plik na końcu symulacji
+     */
     public void close() {
         if (writer != null) {
             writer.close();

@@ -13,8 +13,8 @@ public class Simulation {
     private final Renderer renderer;
 
     /**
-     * Konstruktor symulacji
-     * @param config
+     * Konstruktor symulacji z zadaną konfiguracją
+     * @param config konfiguracja symulacji
      */
     public Simulation(Config config) {
         this.config = config;
@@ -47,7 +47,7 @@ public class Simulation {
 
     /**
      * Funkcja do pozyskiwania losowych punktów na planszy
-     * @return Point
+     * @return losowy punkt na planszy
      */
     private Point getRandomPosition() {
         return new Point(
@@ -57,7 +57,7 @@ public class Simulation {
 
     /**
      * Główna funkcja odpowiedzialna za przebieg symulacji
-     * Wykonuje zadaną liczbe epok
+     * Wykonuje zadaną liczbe epok, wyświetla plansze i zapisuje stan każdej epoki
      */
     public void run() {
         for (int epoch = 0; epoch < config.getSimulationDuration(); epoch++) {
@@ -77,6 +77,10 @@ public class Simulation {
         logger.close();
         System.out.println("Dane zapisane do pliku csv");
     }
+
+    /**
+     *Funkcja main, pobiera konfig, inicjalizuje symulacje i wprawia ją w ruch
+     */
     public static void main(String[] args) {
         Config config = new Config();
         Simulation simulation = new Simulation(config);

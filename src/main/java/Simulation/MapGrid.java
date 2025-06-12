@@ -3,6 +3,10 @@ package Simulation;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Plansza symulacji zawierająca ludzi i szpitale
+ * Odpowiedzialna za poruszanie, infekowanie oraz leczenie
+ */
 public class MapGrid {
     private final int width;
     private final int height;
@@ -11,6 +15,12 @@ public class MapGrid {
     private final Virus virus;
     private final Config config;
 
+    /**
+     * Konstruktor Planszy z zadanymi parametrami
+     * @param width szerokość
+     * @param height wysokość
+     * @param config parametry szpitali, ludzi i wirusa
+     */
     public MapGrid(int width, int height, Config config) {
         this.config = config;
         this.width = width;
@@ -20,14 +30,25 @@ public class MapGrid {
         this.hospitals = new ArrayList<Hospital>();
     }
 
+    /**
+     * Funkcja dodająca ludzi
+     * @param person
+     */
     public void addPerson(Person person) {
         people.add(person);
     }
 
+    /**
+     * Funkcja dodająca szpitale
+     * @param hospital
+     */
     public void addHospital(Hospital hospital) {
         hospitals.add(hospital);
     }
 
+    /**
+     * Funkcja przemieszczająca ludzi
+     */
     public void movePeople() {
         for (Person person : people) {
             if (person.isAlive()) {
@@ -36,6 +57,9 @@ public class MapGrid {
         }
     }
 
+    /**
+     * Funkcja do infekowania ludzi
+     */
     public void infectPeople() {
         for (Person person : people) {
             if (person.isAlive() && person.isInfected()) {
@@ -51,6 +75,9 @@ public class MapGrid {
         }
     }
 
+    /**
+     * Funkcja do leczenia ludzi
+     */
     public void healPeople() {
         for (Person person : people) {
             if (person.isAlive()) {
@@ -64,6 +91,9 @@ public class MapGrid {
         }
     }
 
+    /**
+     * Funkcja odpowiedzialna za śmierci
+     */
     public void deaths() {
         for (Person person : people) {
             if (person.isAlive() && person.isInfected()) {
@@ -74,6 +104,9 @@ public class MapGrid {
         }
     }
 
+    /**
+     * Funkcja aktualizująca czas odporności
+     */
     public void updateTimer() {
         for (Person person : people) {
                 if (person.isImmune()) {
